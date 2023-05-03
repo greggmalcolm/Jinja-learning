@@ -1,0 +1,16 @@
+---
+- hosts: leafs_DC1
+  gather_facts: no
+  tasks:
+  - name: Register variables
+    include_vars:
+      file: "{{lookup('env','PWD')}}/vars/vars1.yml"
+      name: variables1
+    tags:
+    - build
+  - name: Create configurations
+    template:
+      src: "{{lookup('env','PWD')}}/templates/template2.j2"
+      dest: "{{lookup('env','PWD')}}/configs/{{inventory_hostname}}_learn2.cfg"
+    tags:
+    - build

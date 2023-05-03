@@ -1,0 +1,8 @@
+{# filters #}
+
+{# join #}
+{% set name_server = variables1[inventory_hostname]['name_servers'] %}
+ip name server {{ name_server | join(" ") }}
+
+{# Result is "ip name server 1.1.1.1 2.2.2.2 4.2.2.2 8.8.8.8" #}
+

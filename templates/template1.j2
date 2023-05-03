@@ -1,0 +1,25 @@
+
+
+{# in order to remove the cr/lf that would occur in the loop before the bangs, on line 9 there is a minus #}
+{# before the ending delimiter -%}.  The is also another minus in the {%- endfor %} line 24 #}
+
+hostname {{ variables1[inventory_hostname]['hostname'] }}
+ntp server {{ variables1[inventory_hostname]['ntp1'] }}
+ntp server {{ variables1[inventory_hostname]['ntp2'] }}
+!
+{% for item in variables1[inventory_hostname]['interfaces'] -%}
+interface {{ item }}
+{% if 'Loopback' in item %}
+   description *** This is a Loopback Interface ***
+   ip address {{ variables1[inventory_hostname]['interfaces'][item]['ip_addr']}} 
+!
+{% elif 'Ethernet' in item %}
+   description *** This is an Ethernet Interface ***
+   ip address {{ variables1[inventory_hostname]['interfaces'][item]['ip_addr']}} 
+!
+{% elif 'Vlan' in item %}
+   description *** This is an SVI Interface ***
+   ip address {{ variables1[inventory_hostname]['interfaces'][item]['ip_addr']}} 
+!
+{% endif %}   
+{%- endfor %}

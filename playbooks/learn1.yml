@@ -1,0 +1,23 @@
+---
+- hosts: leafs_DC1
+  gather_facts: no
+  tasks:
+  - name: Register variables
+    include_vars:
+      file: "{{lookup('env','PWD')}}/vars/vars1.yml"
+      name: variables1
+    tags:
+    - build
+    - provision
+  - name: Create configurations
+    template:
+      src: "{{lookup('env','PWD')}}/templates/template1.j2"
+      dest: "{{lookup('env','PWD')}}/configs/{{inventory_hostname}}_automation.cfg"
+    tags:
+    - build
+    - provision
+  - name: Upload Config
+    eos_config:
+      src: "{{lookup('env','PWD')}}/configs/{{inventory_hostname}}_automation.cfg"
+    tags:
+    - provision

@@ -1,0 +1,61 @@
+switch1:
+  hostname: "switch1.netdevenv.net"
+  interfaces:
+    Ethernet1:
+      ip_addr: 1.1.1.1/24
+    Ethernet2:
+      ip_addr: 2.2.2.2/24
+    Ethernet3:
+      ip_addr: 3.3.3.3/24
+    Ethernet4:
+      ip_addr: 4.4.4.4/24
+    Loopback0: 
+      ip_addr: 198.18.253.1/32
+    Loopback1: 
+      ip_addr: 198.18.254.1/32
+    Loopback2: 
+      ip_addr: 198.18.255.1/32
+    Vlan10:
+      ip_addr: 10.10.10.1/24
+    Vlan20:
+      ip_addr: 10.10.20.1/24
+    Vlan30:
+      ip_addr: 10.10.30.1/24
+  ntp1: 129.1.1.1
+  ntp2: 129.1.1.2
+  name_servers:
+     - 1.1.1.1
+     - 2.2.2.2
+     - 4.2.2.2
+     - 8.8.8.8
+
+switch2:
+  hostname: "switch2.netdevenv.net"
+  interfaces:
+    Ethernet1:
+      ip_addr: 11.11.11.11/24
+    Ethernet2:
+      ip_addr: 12.12.12.12/24
+    Ethernet3:
+      ip_addr: 13.13.13.13/24
+    Ethernet4:
+      ip_addr: 14.14.14.14/24
+    Loopback0: 
+      ip_addr: 198.18.253.2/32
+    Loopback1: 
+      ip_addr: 198.18.254.2/32
+    Loopback2: 
+      ip_addr: 198.18.255.2/32
+    Vlan10:
+      ip_addr: 10.10.10.1/24
+    Vlan20:
+      ip_addr: 10.10.20.1/24
+    Vlan30:
+      ip_addr: 10.10.30.1/24
+  ntp1: 129.1.1.1
+  ntp2: 129.1.1.2
+  name_servers:
+     - 1.1.1.1
+     - 2.2.2.2
+     - 4.2.2.2
+     - 8.8.8.8

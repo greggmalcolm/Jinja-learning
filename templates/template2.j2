@@ -1,0 +1,12 @@
+
+{# set variable is very useful #}
+{% set var = variables1[inventory_hostname]['hostname'] %}
+
+{# all sorts for how variables can be evaluated.  These are just a few #}
+{% if var is number %}
+   {{ var }} is a number
+{% elif var is string %}
+   {{ var }} is a string 
+ {% elif var is iterable %}
+   {{ var }} is iterable   
+{% endif %}
