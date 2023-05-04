@@ -7,7 +7,7 @@
   tasks:
   - name: Create configurations
     template:
-      src: ~/ACE5/Jinja-learning/templates/my_macro_template2.j2
+      src: ~/ACE5/Jinja-learning/templates/my_macro_template.j2
       dest: ~/ACE5/Jinja-learning/configs/{{inventory_hostname}}_my_macro.cfg
     tags:
     - build

@@ -1,5 +1,4 @@
-
-{#  {% macro eth_intf(switch1.interfaces) -%} #}
+{% macro eth_intf(interfaces) -%}
 {% for intf in switch1.interfaces -%}
 interface {{ intf }}
 {% if 'Ethernet' in intf %}
@@ -8,7 +7,7 @@ interface {{ intf }}
   mtu 9214
 {% endif %} 
 {% endfor -%} 
-{# {% endmacro %} #}
+{% endmacro %}
 
-{# {{ eth_intf(switch1) }} #}
+{{ eth_intf(switch1) }}
 
