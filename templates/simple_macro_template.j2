@@ -1,0 +1,11 @@
+
+{# macro name is "def_if_desc" and arg is "if_role" #}
+{% macro def_if_desc(if_role) -%}
+{# macro inserts the role: key value #}
+Unused port, dedicated to {{ if_role }} devices
+{%- endmacro -%}
+
+{% for intf in interfaces -%}
+interface {{ intf.name }}
+  description {{ def_if_desc(intf.role) }}
+{% endfor -%}

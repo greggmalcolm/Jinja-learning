@@ -1,0 +1,14 @@
+---
+- hosts: switch1
+  gather_facts: no
+  vars_files: 
+    - ~/ACE5/Jinja-learning/vars/bgp_vars.yml
+
+  tasks:
+  - name: Create configurations
+    template:
+      src: ~/ACE5/Jinja-learning/templates/bgp_neighbor_template.j2
+      dest: ~/ACE5/Jinja-learning/configs/{{inventory_hostname}}_bgp.cfg
+    tags:
+    - build
+    - provision

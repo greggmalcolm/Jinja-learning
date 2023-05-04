@@ -1,0 +1,14 @@
+---
+- hosts: switch1
+  gather_facts: no
+  vars_files: 
+    - ~/ACE5/Jinja-learning/vars/vars1.yml
+
+  tasks:
+  - name: Create configurations
+    template:
+      src: ~/ACE5/Jinja-learning/templates/my_macro_template2.j2
+      dest: ~/ACE5/Jinja-learning/configs/{{inventory_hostname}}_my_macro.cfg
+    tags:
+    - build
+    - provision

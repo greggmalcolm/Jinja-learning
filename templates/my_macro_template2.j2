@@ -1,0 +1,13 @@
+{% macro eth_intf(interfaces) -%}
+{% for intf in switch1.interfaces -%}
+interface {{ intf }}
+{% if 'Ethernet' in intf %}
+  description  *** This is an Ethernet interface ***
+  no switchport
+  mtu 9214
+{% endif %} 
+{% endfor -%} 
+{% endmacro %}
+
+{{ eth_intf(switch1) }}
+

@@ -1,0 +1,16 @@
+{# enter router bgp config mode #}
+router bgp {{ bgp.as_no }}
+{# loop through the bgp peers #}
+{% for peer in bgp.peers %}
+{# ipaddr(0) selects the first ip in a subnet - works for /31 #}
+{% set nei_ip = interfaces[peer.intf].ip_add | ipaddr(0) -%}
+{# check if our IP matches the neighbor IP.  If so, increment 1  #}
+{% if interfaces[peer.intf].ip_add == nei_ip -%}
+{% set peer_ip = nei_ip | ipaddr(1) | ipaddr('address') -%}
+{% else -%}
+{# if not neighbor IP, set neighbor IP #}
+{% set peer_ip = nei_ip | ipaddr('address') -%}
+{% endif %}
+ neighbor {{ peer_ip }} remote-as {{ peer.as_no }}
+ neighbor {{ peer_ip }} description {{ interfaces[peer.intf].peer }}
+{% endfor %}
